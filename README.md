@@ -21,12 +21,28 @@ bash ./nodo.sh
 # Instalar sudo y software-properties-common, agregar el repositorio Mysterium Network
 apt update
 apt install sudo software-properties-common -y
+apt install iputils -y
 add-apt-repository ppa:mysteriumnetwork/node -y
 
 # Instalar myst
 apt install myst -y
+```
+4. Editamos la configuracion del nodo.
+```
+# Editar configuracion Myst
+apt install vim -y
+nano /etc/default/mysterium-node
+```
+5. Establecemos los siguientes parametros y guardamos el archivo:
+```
+DAEMON_OPTS="--traversal=\"holepunching,manual,upnp\"--keystore.lightweight"
+SERVICE_OPTS="wireguard"
+```
 
+
+
+```
 # Ejecutar myst
 myst service --agreed-terms-and-conditions
 ```
-4. Su nodo Mysterium ya está instalado. Encuentre la dirección IP de su dispositivo y configure el nodo desde el Dashboard.
+5. Su nodo Mysterium ya está instalado. Encuentre la dirección IP de su dispositivo y configure el nodo desde el Dashboard.
